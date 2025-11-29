@@ -35,18 +35,20 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <a 
-                href="https://linkedin.com/company/wellspring-speech-therapy" 
+                href="https://www.linkedin.com/company/wellspring-speech-and-language-therapy-rehabilitation-centre" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="https://twitter.com/WellspringGhana" 
+                href="https://twitter.com/wellspringghana" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
@@ -55,6 +57,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -63,6 +66,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="WhatsApp"
               >
                 <MessageCircle className="w-5 h-5" />
               </a>

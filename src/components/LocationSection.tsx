@@ -24,18 +24,28 @@ const LocationSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-          {/* Map Embed */}
-          <div className="rounded-3xl overflow-hidden shadow-lifted h-full min-h-[400px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.5!2d-1.6321!3d6.6885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96f34b60c0c7%3A0x2f3d5e7c8a1d2e4f!2sHapaSpace%20Kumasi!5e0!3m2!1sen!2sgh!4v1699999999999!5m2!1sen!2sgh"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: '400px' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Wellspring Speech Therapy Location - HapaSpace, Danyame, Kumasi"
-            />
+          {/* Map Embed with Creative Styling */}
+          <div className="relative rounded-3xl overflow-hidden shadow-lifted h-full min-h-[400px] group">
+            {/* Decorative gradient border */}
+            <div className="absolute inset-0 rounded-3xl gradient-teal-orange p-1 z-0">
+              <div className="w-full h-full bg-card rounded-[calc(1.5rem-4px)]" />
+            </div>
+            <div className="absolute inset-1 rounded-[calc(1.5rem-4px)] overflow-hidden z-10">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.6!2d-1.6285!3d6.6850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96ea67f56a13%3A0x1c8c7dc2b94c8e89!2sHapaSpace%20Kumasi!5e0!3m2!1sen!2sgh!4v1699999999999!5m2!1sen!2sgh"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Wellspring Speech Therapy Location - HapaSpace, Danyame, Kumasi"
+              />
+            </div>
+            {/* Floating GPS badge */}
+            <div className="absolute bottom-4 left-4 z-20 px-4 py-2 rounded-full glass-panel shadow-soft border border-primary/20 animate-fade-in">
+              <span className="text-sm font-semibold text-primary">GPS: AK-132-4568</span>
+            </div>
           </div>
 
           {/* Contact Info Card */}

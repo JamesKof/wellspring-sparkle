@@ -90,11 +90,11 @@ const BookingSection = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Phone</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Phone (WhatsApp)</label>
                       <input 
                         type="tel" 
                         className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="(123) 456-7890"
+                        placeholder="+233 XX XXX XXXX"
                       />
                     </div>
                     

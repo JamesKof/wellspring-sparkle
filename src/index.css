@@ -6,57 +6,60 @@
 
 @layer base {
   :root {
-    /* Warm therapeutic color palette */
-    --background: 40 33% 98%;
-    --foreground: 200 25% 20%;
+    /* Wellspring brand color palette - derived from logo */
+    --background: 180 15% 98%;
+    --foreground: 180 40% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 200 25% 20%;
+    --card-foreground: 180 40% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 200 25% 20%;
+    --popover-foreground: 180 40% 15%;
 
-    /* Turquoise/Teal - Primary therapeutic color */
-    --primary: 174 62% 47%;
+    /* Teal/Turquoise - Primary from logo */
+    --primary: 177 70% 41%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 174 62% 90%;
-    --primary-dark: 174 62% 35%;
+    --primary-light: 177 70% 92%;
+    --primary-dark: 177 70% 28%;
 
-    /* Warm Coral/Orange - Secondary friendly color */
-    --secondary: 24 95% 66%;
+    /* Orange/Coral - Secondary from logo */
+    --secondary: 28 95% 55%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 24 95% 92%;
+    --secondary-light: 28 95% 92%;
 
-    /* Sage Green - Accent */
-    --accent: 150 30% 60%;
+    /* Dark Teal - Accent */
+    --accent: 180 100% 22%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 150 30% 92%;
+    --accent-light: 180 50% 90%;
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 200 15% 45%;
+    --muted: 180 10% 94%;
+    --muted-foreground: 180 20% 40%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 200 20% 88%;
-    --input: 200 20% 88%;
-    --ring: 174 62% 47%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
+    --ring: 177 70% 41%;
 
     --radius: 1rem;
 
     /* Custom design tokens */
-    --glass-bg: 0 0% 100% / 0.7;
-    --glass-border: 0 0% 100% / 0.3;
-    --shadow-soft: 0 4px 30px hsl(200 25% 20% / 0.08);
-    --shadow-lifted: 0 20px 50px hsl(200 25% 20% / 0.12);
-    --shadow-glow: 0 0 40px hsl(174 62% 47% / 0.2);
+    --glass-bg: 0 0% 100% / 0.85;
+    --glass-border: 177 70% 41% / 0.15;
+    --shadow-soft: 0 4px 30px hsl(180 40% 15% / 0.08);
+    --shadow-lifted: 0 20px 50px hsl(180 40% 15% / 0.12);
+    --shadow-glow: 0 0 40px hsl(177 70% 41% / 0.25);
+    --shadow-glow-secondary: 0 0 40px hsl(28 95% 55% / 0.25);
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(174 62% 95%) 0%, hsl(40 33% 98%) 50%, hsl(24 95% 96%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 33% 98%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(174 62% 47%) 0%, hsl(174 62% 55%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(24 95% 66%) 0%, hsl(24 95% 72%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.8) 0%, hsl(0 0% 100% / 0.6) 100%);
+    /* Brand Gradients - matching logo */
+    --gradient-brand: linear-gradient(135deg, hsl(177 70% 41%) 0%, hsl(180 100% 22%) 50%, hsl(28 95% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(177 70% 95%) 0%, hsl(180 15% 98%) 40%, hsl(28 95% 96%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(180 15% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(177 70% 45%) 0%, hsl(180 100% 28%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(28 95% 55%) 0%, hsl(20 90% 50%) 100%);
+    --gradient-teal-orange: linear-gradient(135deg, hsl(177 70% 41%) 0%, hsl(28 95% 55%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.9) 0%, hsl(0 0% 100% / 0.7) 100%);
 
     /* Sidebar defaults */
     --sidebar-background: 0 0% 98%;
@@ -162,6 +165,19 @@
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-brand);
+  }
+
+  .gradient-brand {
+    background: var(--gradient-brand);
+  }
+
+  .gradient-teal-orange {
+    background: var(--gradient-teal-orange);
   }
 }
 

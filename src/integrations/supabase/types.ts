@@ -14,16 +14,280 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          client_id: string
+          duration_minutes: number
+          id: string
+          is_sample: boolean
+          service: string
+          starts_at: string
+          status: string
+          therapist_id: string | null
+        }
+        Insert: {
+          client_id: string
+          duration_minutes?: number
+          id?: string
+          is_sample?: boolean
+          service?: string
+          starts_at: string
+          status?: string
+          therapist_id?: string | null
+        }
+        Update: {
+          client_id?: string
+          duration_minutes?: number
+          id?: string
+          is_sample?: boolean
+          service?: string
+          starts_at?: string
+          status?: string
+          therapist_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_therapist_id_fkey"
+            columns: ["therapist_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          entity: string
+          id: string
+          record_id: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          entity: string
+          id?: string
+          record_id?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          entity?: string
+          id?: string
+          record_id?: string | null
+        }
+        Relationships: []
+      }
+      centre_settings: {
+        Row: {
+          address: string
+          centre_name: string
+          id: number
+          phone: string
+          timezone: string
+        }
+        Insert: {
+          address?: string
+          centre_name?: string
+          id?: number
+          phone?: string
+          timezone?: string
+        }
+        Update: {
+          address?: string
+          centre_name?: string
+          id?: number
+          phone?: string
+          timezone?: string
+        }
+        Relationships: []
+      }
+      client_access: {
+        Row: {
+          client_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          client_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          client_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_access_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_access_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clients: {
+        Row: {
+          created_at: string
+          date_of_birth: string | null
+          full_name: string
+          id: string
+          is_sample: boolean
+          service: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          date_of_birth?: string | null
+          full_name: string
+          id?: string
+          is_sample?: boolean
+          service?: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string
+          id?: string
+          is_sample?: boolean
+          service?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      clinical_notes: {
+        Row: {
+          author_id: string
+          body: string
+          client_id: string
+          created_at: string
+          id: string
+          shared_with_family: boolean
+          title: string
+        }
+        Insert: {
+          author_id?: string
+          body: string
+          client_id: string
+          created_at?: string
+          id?: string
+          shared_with_family?: boolean
+          title: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          client_id?: string
+          created_at?: string
+          id?: string
+          shared_with_family?: boolean
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_notes_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clinical_notes_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          id: string
+          phone: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          id: string
+          phone?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          id?: string
+          phone?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["centre_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["centre_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["centre_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      assign_centre_role: {
+        Args: {
+          new_role: Database["public"]["Enums"]["centre_role"]
+          target_user: string
+        }
+        Returns: undefined
+      }
+      can_access_client: { Args: { target: string }; Returns: boolean }
+      has_centre_role: {
+        Args: { roles: Database["public"]["Enums"]["centre_role"][] }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      centre_role:
+        | "md"
+        | "deputy_md"
+        | "speech_therapist"
+        | "occupational_therapist"
+        | "administrator"
+        | "assistant"
+        | "client"
+        | "caregiver"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +414,17 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      centre_role: [
+        "md",
+        "deputy_md",
+        "speech_therapist",
+        "occupational_therapist",
+        "administrator",
+        "assistant",
+        "client",
+        "caregiver",
+      ],
+    },
   },
 } as const
